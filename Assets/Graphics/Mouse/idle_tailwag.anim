@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: mouseIdle
+  m_Name: idle_tailwag
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,10 +20,8 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 00e524014caff4b3aaca19ec805a8e44, type: 3}
-    - time: 0.15
+    - time: 0.48333332
       value: {fileID: 21300000, guid: 9ce83a8df79474d94bb40616a9d16704, type: 3}
-    - time: 0.5
-      value: {fileID: 0}
     - time: 1
       value: {fileID: 21300000, guid: 00e524014caff4b3aaca19ec805a8e44, type: 3}
     attribute: m_Sprite
@@ -47,7 +45,6 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: 00e524014caff4b3aaca19ec805a8e44, type: 3}
     - {fileID: 21300000, guid: 9ce83a8df79474d94bb40616a9d16704, type: 3}
-    - {fileID: 0}
     - {fileID: 21300000, guid: 00e524014caff4b3aaca19ec805a8e44, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
