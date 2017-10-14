@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueHolder : MonoBehaviour {
 
 	public string[] dialogue;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +17,10 @@ public class DialogueHolder : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
-		DialogueManager.instance.Show (dialogue);
+		GameManager gameManager = GameManager.GetInstance();
+		if (collider.gameObject == gameManager.player.gameObject) {
+			DialogueManager.instance.Show (dialogue);
+		}
 	}
 	void OnTriggerExit2D(Collider2D collider) {
 		DialogueManager.instance.Hide ();
