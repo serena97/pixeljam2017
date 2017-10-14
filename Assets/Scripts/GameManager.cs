@@ -18,14 +18,14 @@ public class GameManager : MonoBehaviour {
         if (direction == Direction.Left)
         {
             player.transform.position = new Vector2(
-                player.transform.position.x + 18,
+                player.transform.position.x + 16,
                 player.transform.position.y
             );
         }
         if (direction == Direction.Right)
         {
             player.transform.position = new Vector2(
-                player.transform.position.x - 18,
+                player.transform.position.x - 16,
                 player.transform.position.y
             );
         }
