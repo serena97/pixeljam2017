@@ -26,7 +26,6 @@ public class Player : MonoBehaviour {
 
     private int shootingCooldown = 0;
     private bool canJump = true;
-	private Direction direction;
 
     void Start () {
         if(instance == null) {
@@ -58,11 +57,9 @@ public class Player : MonoBehaviour {
         }
 
 		if (xVelocity != 0) { // Only update the facing direction if we are moving.
-			direction = xVelocity < 0 ? Direction.Left : Direction.Right;
-			spriteRenderer.flipX = direction == Direction.Right;
+			spriteRenderer.flipX = xVelocity > 0;
 			animator.SetTrigger ("BeginRun");
 		} else {
-			spriteRenderer.flipX = direction == Direction.Left;
 			animator.SetTrigger ("EndRun");
 		}
 
