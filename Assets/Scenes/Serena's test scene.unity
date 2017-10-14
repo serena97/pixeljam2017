@@ -1002,6 +1002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e186d6aa0a2c74fee917325555438b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  message: []
+  messageDisplay: {fileID: 792696480}
 --- !u!1001 &2099790619
 Prefab:
   m_ObjectHideFlags: 0

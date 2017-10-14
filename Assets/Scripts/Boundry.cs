@@ -15,7 +15,7 @@ public class Boundry : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         GameManager gameManager = GameManager.GetInstance();
-        if(collision.gameObject == gameManager.player.gameObject && nextScene != "") {
+        if(collision.gameObject == gameManager.player.gameObject&& nextScene != "") {
             gameManager.SwitchScene(nextScene, direction);
         }
     }
