@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
 
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
+	private Animator animator;
 
     private int shootingCooldown = 0;
     private bool canJump = true;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour {
         }
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+		animator = GetComponent<Animator> ();
     }
 
     void Update () {
@@ -54,14 +56,18 @@ public class Player : MonoBehaviour {
             canJump = false; // Can't jump again until we land.
         }
 
-        if (xVelocity != 0) { // Only update the facing direction if we are moving.
-            spriteRenderer.flipX = xVelocity < 0;
-        }
+		if (xVelocity != 0) { // Only update the facing direction if we are moving.
+			spriteRenderer.flipX = xVelocity > 0;
+			animator.SetTrigger ("BeginRun");
+		} else {
+			animator.SetTrigger ("EndRun");
+		}
+
 
         rigidBody.velocity = new Vector2(xVelocity, yVelocity);
 
         if (shootingCooldown <= 0 && Input.GetKey(shootKey)) {
-            ShootProjectile(spriteRenderer.flipX ? Direction.Left : Direction.Right);
+			ShootProjectile(spriteRenderer.flipX ? Direction.Right : Direction.Left);
             shootingCooldown = shootingInterval;
         }
 
