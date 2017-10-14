@@ -13,7 +13,7 @@ public class GuardMouse : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		// wait for 5 seconds
-		notInvited = "Let's see...";
+		notInvited.text = "Let's see...";
 			
 	}
 	

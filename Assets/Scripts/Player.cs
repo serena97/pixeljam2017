@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    private static Player instance; // Singleton design pattern.
+
+    public static Player GetInstance() {
+        return instance;
+    }
+
     public GameObject projectile;
     public KeyCode moveLeftKey = KeyCode.LeftArrow;
     public KeyCode moveRightKey = KeyCode.RightArrow;
@@ -21,6 +27,13 @@ public class Player : MonoBehaviour {
     private bool canJump = true;
 
     void Start () {
+        if(instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+        }
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -36,7 +49,7 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(moveRightKey)) {
             xVelocity += moveForce;
         }
-        if (canJump && Input.GetKeyDown(jumpKey)) {
+        if (canJump && Input.GetKey(jumpKey)) {
             yVelocity += jumpForce;
             canJump = false; // Can't jump again until we land.
         }
