@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
-	public static Coin instance;
+	private BoxCollider2D boxCollider2D;
 
 	// Use this for initialization
 	void Start () {
+		boxCollider2D = GetComponent<BoxCollider2D> ();
 		// update text of coin 
 
 	}
@@ -18,9 +19,16 @@ public class Coin : MonoBehaviour {
 	}
 
 	// if collider is entered by player then coin hides 	
-	void OnTriggerEnter2D(Collider2D collider) {
+	void OnCollisionEnter2D(Collision2D collider) {
+		Debug.Log ("coin trigger");
+		Debug.Log ("(collider.gameObject" + collider.gameObject);
 		if (collider.gameObject == Player.instance.gameObject) {
-			gameObject.SetActive (false);
+			Debug.Log ("hello");
+			CoinManager.instance.coinCounter++;
+			boxCollider2D.enabled = false;
+			Debug.Log ("destroy");
+			Destroy (gameObject);
 		}
+
 	}
 }
