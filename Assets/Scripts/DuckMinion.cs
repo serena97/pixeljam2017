@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class DuckMinion : MonoBehaviour {
 
-	public float speed = 1.0f;
+	public float speed = 0.5f;
 	Rigidbody2D rigidBody;
 	SpriteRenderer spriteRenderer;
 	Direction direction = Direction.Right;
 	int timer = 200;
 
-	public int minDistance = 5;
-	public int maxDistance = 10;
+	public Transform player;
 
 	public int hitpoint = 10;
 	public int damage = 10;
@@ -20,27 +19,36 @@ public class DuckMinion : MonoBehaviour {
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+
+		player = GameObject.Find("Player").transform;
 	}
 
 	// Update is called once per frame
 	void Update () {
-	timer--;
+
+		if (player != null) { 
+			Vector3 direction = player.position - transform.position;
+			transform.position += (player.position - transform.position).normalized * speed * Time.deltaTime;
+		} else {
+			patrol ();
+		}
+	
+        //if hit with apple, health -- whatever
+        HandleFlicker();
+	}
+
+	void patrol() {
+		timer--;
 		if (timer <= 0) { 
 			direction = direction == Direction.Left ? Direction.Right : Direction.Left;
 			timer = 200;
 		}
-		/*
-		if (Vector3.Distance (this.transform.position, Player.transform.position) >= minDistance) {
-			transform.position += rigidBody.velocity * Time.deltaTime;
-		}*/
 
 		spriteRenderer.flipX = direction == Direction.Right;
 		Vector2 newVelocity = new Vector2 (direction == Direction.Left ? -speed : speed, rigidBody.velocity.y);
 		rigidBody.velocity = newVelocity;
-
-        //if hit with apple, health -- whatever
-        HandleFlicker();
 	}
+
 
 	void OnTriggerEnter2D(Collider2D collider) {
 		GameObject collisionObject = collider.gameObject;
