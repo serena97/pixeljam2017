@@ -11,6 +11,7 @@ public class DuckMinion : MonoBehaviour {
 	int timer = 200;
 
 	public int hitpoint = 10;
+	public int damage = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +38,6 @@ public class DuckMinion : MonoBehaviour {
 		Apple apple = collisionObject.GetComponent<Apple> ();
 		hitpoint--;
 		if (apple != null) { // this is an apple
-			//trigger pot to break
 			if (hitpoint <= 0) {
 				Destroy (gameObject);
 				//sho 

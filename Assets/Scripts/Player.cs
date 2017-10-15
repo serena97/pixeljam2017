@@ -100,6 +100,7 @@ public class Player : MonoBehaviour {
 
 		if (enemy != null) { 
 			hitpoint--;
+			Debug.Log ("hitpoint"+hitpoint);
 			if (hitpoint <= 0) {
 				Destroy (gameObject);
 				//gameover ????

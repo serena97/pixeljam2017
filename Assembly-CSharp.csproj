@@ -54,7 +54,6 @@
      <Compile Include="Assets\Coin.cs" />
      <Compile Include="Assets\Scripts\Apple.cs" />
      <Compile Include="Assets\Scripts\Boundry.cs" />
-     <Compile Include="Assets\Scripts\Coin.cs" />
      <Compile Include="Assets\Scripts\CoinManager.cs" />
      <Compile Include="Assets\Scripts\DialogueHolder.cs" />
      <Compile Include="Assets\Scripts\DialogueManager.cs" />
