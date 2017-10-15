@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
         switch (selectedItem)
         {
             case Item.Apple:
-                ShootProjectile(spriteRenderer.flipX ? Direction.Left : Direction.Right);
+                ShootProjectile(spriteRenderer.flipX ? Direction.Right : Direction.Left);
                 break;
         }
     }
