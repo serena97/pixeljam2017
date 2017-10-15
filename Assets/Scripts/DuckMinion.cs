@@ -16,6 +16,8 @@ public class DuckMinion : MonoBehaviour {
 	Direction direction = Direction.Right;
 	int timer = 200;
 
+	public Transform player;
+
 	public int hitpoint = 10;
 	public int damage = 10;
 
@@ -23,8 +25,10 @@ public class DuckMinion : MonoBehaviour {
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+
+		player = GameObject.Find("Player").transform;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         if (behaviour == DuckMinionMode.Patrol)
@@ -53,6 +57,7 @@ public class DuckMinion : MonoBehaviour {
         //if hit with apple, health -- whatever
         HandleFlicker();
 	}
+
 
 	void OnTriggerEnter2D(Collider2D collider) {
 		GameObject collisionObject = collider.gameObject;
