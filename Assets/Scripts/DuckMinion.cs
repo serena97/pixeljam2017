@@ -10,6 +10,8 @@ public class DuckMinion : MonoBehaviour {
 	Direction direction = Direction.Right;
 	int timer = 200;
 
+	public int hitpoint = 10;
+
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
@@ -26,5 +28,25 @@ public class DuckMinion : MonoBehaviour {
 		spriteRenderer.flipX = direction == Direction.Right;
 		Vector2 newVelocity = new Vector2 (direction == Direction.Left ? -speed : speed, rigidBody.velocity.y);
 		rigidBody.velocity = newVelocity;
+
+		//if hit with apple, health -- whatever
 	}
+
+	void OnTriggerEnter2D(Collider2D collider) {
+		GameObject collisionObject = collider.gameObject;
+		Apple apple = collisionObject.GetComponent<Apple> ();
+		hitpoint--;
+		if (apple != null) { // this is an apple
+			//trigger pot to break
+			if (hitpoint <= 0) {
+				Destroy (gameObject);
+				//sho 
+			} else {
+				Destroy (collisionObject); //so that apple will shoot pass vase
+			}
+
+		}
+	}
+
+
 }

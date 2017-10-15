@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
     public float moveForce = 5;
     public float jumpForce = 10;
 
+	public int hitpoint = 50;
+
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
 	private Animator animator;
@@ -83,6 +85,8 @@ public class Player : MonoBehaviour {
                 break; // No need to continue iteration.
             }
         }
+
+
     }
 
     private void ShootProjectile(Direction direction) {
