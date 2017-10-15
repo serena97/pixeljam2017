@@ -144,6 +144,7 @@ MonoBehaviour:
   shootingInterval: 5
   moveForce: 5
   jumpForce: 8
+  hitpoint: 5
 --- !u!212 &212870393463278978
 SpriteRenderer:
   m_ObjectHideFlags: 1
