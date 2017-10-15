@@ -36,6 +36,11 @@ public class Player : MonoBehaviour {
 		animator = GetComponent<Animator> ();
     }
 
+    void UseItem()
+    {
+        // TODO
+    }
+
     void Update () {
 
         float xVelocity = 0;
