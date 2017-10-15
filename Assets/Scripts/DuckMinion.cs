@@ -15,18 +15,22 @@ public class DuckMinion : MonoBehaviour {
 	public int hitpoint = 10;
 	public int damage = 10;
 
+	public float distance;
+
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 
 		player = GameObject.Find("Player").transform;
+
+		distance = Vector3.Distance (transform.position, player.transform.position);
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-		if (player != null) { 
+		if (player != null && distance < 7) { 
 			Vector3 direction = player.position - transform.position;
 			transform.position += (player.position - transform.position).normalized * speed * Time.deltaTime;
 		} else {
