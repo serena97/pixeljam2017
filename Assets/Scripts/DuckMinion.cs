@@ -10,6 +10,9 @@ public class DuckMinion : MonoBehaviour {
 	Direction direction = Direction.Right;
 	int timer = 200;
 
+	public int minDistance = 5;
+	public int maxDistance = 10;
+
 	public int hitpoint = 10;
 	public int damage = 10;
 
@@ -18,14 +21,19 @@ public class DuckMinion : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		timer--;
+	timer--;
 		if (timer <= 0) { 
 			direction = direction == Direction.Left ? Direction.Right : Direction.Left;
 			timer = 200;
 		}
+		/*
+		if (Vector3.Distance (this.transform.position, Player.transform.position) >= minDistance) {
+			transform.position += rigidBody.velocity * Time.deltaTime;
+		}*/
+
 		spriteRenderer.flipX = direction == Direction.Right;
 		Vector2 newVelocity = new Vector2 (direction == Direction.Left ? -speed : speed, rigidBody.velocity.y);
 		rigidBody.velocity = newVelocity;
