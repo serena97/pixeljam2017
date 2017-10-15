@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
     public float moveForce = 5;
     public float jumpForce = 10;
 
-	public int hitpoint = 50;
+	public int hitpoint = 100;
 
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
@@ -86,8 +86,16 @@ public class Player : MonoBehaviour {
             }
         }
 
+		GameObject collisionObj = collision.gameObject;
+		DuckMinion enemy = collisionObj.GetComponent<DuckMinion> ();
 
-    }
+		if (enemy != null) { 
+			hitpoint--;
+			if (hitpoint <= 0) {
+				Destroy (gameObject);
+				//gameover ????
+		}
+		} }
 
     private void ShootProjectile(Direction direction) {
         Vector2 projectileOffset = (direction == Direction.Left ? Vector2.left : Vector2.right) * 0.5f;
