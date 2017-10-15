@@ -7,7 +7,7 @@ public class Vase : MonoBehaviour {
 	public Sprite shatteredVase;
 	public Sprite unshatteredVase;
 	public GameObject coin; //coin prefab 
-
+	private BoxCollider2D boxCollider2D;
 	private SpriteRenderer spriteRenderer;
 
 	public int hitpoint = 10;
@@ -15,6 +15,7 @@ public class Vase : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+		boxCollider2D = GetComponent<BoxCollider2D> ();
 	}
 
 
@@ -42,6 +43,7 @@ public class Vase : MonoBehaviour {
 			//trigger pot to break
 			if (hitpoint <= 0) {
 				Break ();
+				boxCollider2D.enabled = false;
 				//sho 
 			} else {
 				Destroy (collisionObject); //so that apple will shoot pass vase
