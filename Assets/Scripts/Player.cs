@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
     public int shootingInterval = 200;
     public float moveForce = 5;
     public float jumpForce = 10;
-
+    
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
 	private Animator animator;
@@ -36,9 +36,15 @@ public class Player : MonoBehaviour {
 		animator = GetComponent<Animator> ();
     }
 
-    void UseItem()
-    {
-        // TODO
+    void UseItem() {
+        Item selectedItem = InventoryDisplay.instance.CurrentItem();
+
+        switch (selectedItem)
+        {
+            case Item.Apple:
+                ShootProjectile(spriteRenderer.flipX ? Direction.Left : Direction.Right);
+                break;
+        }
     }
 
     void Update () {
@@ -64,13 +70,16 @@ public class Player : MonoBehaviour {
 			animator.SetTrigger ("EndRun");
 		}
 
-
         rigidBody.velocity = new Vector2(xVelocity, yVelocity);
 
+        if (Input.GetKeyDown(jumpKey) && Door.activeDoor && !Door.activeDoor.locked)
+        {
+            Door.activeDoor.Enter();
+        }
+
         if (shootingCooldown <= 0 && Input.GetKey(shootKey)) {
-            UseItem();
-			ShootProjectile(spriteRenderer.flipX ? Direction.Right : Direction.Left);
             shootingCooldown = shootingInterval;
+            UseItem();
         }
 
         shootingCooldown--;

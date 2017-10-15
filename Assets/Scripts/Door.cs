@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour {
-
+    public static Door activeDoor;
     public Sprite unlockedDoorGraphic;
     public Sprite lockedDoorGraphic;
     public string destination = "";
     public bool locked;
 
     private SpriteRenderer spriteRenderer;
-    private bool doorActive = false;
 
     public void Lock()
     {
@@ -31,7 +30,7 @@ public class Door : MonoBehaviour {
     {
         if (collision.gameObject == Player.instance.gameObject)
         {
-            doorActive = true;
+            activeDoor = this;
         }
     }
 
@@ -39,20 +38,27 @@ public class Door : MonoBehaviour {
     {
         if (collision.gameObject == Player.instance.gameObject)
         {
-            doorActive = false;
+            if(activeDoor == this)
+            {
+                activeDoor = null;
+            }
         }
     }
 
     // Use this for initialization
     void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(!locked && doorActive && Input.GetKeyDown(KeyCode.Space))
+        if(locked)
         {
-            SceneManager.LoadScene(destination);
+            Lock();
         }
+        else
+        {
+            Unlock();
+        }
+	}
+
+    public void Enter() {
+        SceneManager.LoadScene(destination);
 	}
 }
