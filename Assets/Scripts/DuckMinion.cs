@@ -30,13 +30,15 @@ public class DuckMinion : MonoBehaviour {
 		Vector2 newVelocity = new Vector2 (direction == Direction.Left ? -speed : speed, rigidBody.velocity.y);
 		rigidBody.velocity = newVelocity;
 
-		//if hit with apple, health -- whatever
+        //if hit with apple, health -- whatever
+        HandleFlicker();
 	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
 		GameObject collisionObject = collider.gameObject;
 		Apple apple = collisionObject.GetComponent<Apple> ();
 		hitpoint--;
+        StartFlicker();
 		if (apple != null) { // this is an apple
 			if (hitpoint <= 0) {
 				Destroy (gameObject);
@@ -47,6 +49,41 @@ public class DuckMinion : MonoBehaviour {
 
 		}
 	}
+
+    private int flickerMaxCount = 10;
+    private int flickerCurrentCount = 0;
+    private int flickerToggleDelayMax = 1;
+    private int flickerToggleDelayCurrent = 0;
+
+    public void StartFlicker()
+    {
+        flickerCurrentCount = flickerMaxCount;
+    }
+
+    public void HandleFlicker()
+    {
+        if(flickerCurrentCount > 0)
+        {
+            if(flickerToggleDelayCurrent > 0)
+            {
+                flickerToggleDelayCurrent--;
+            }
+            else
+            {
+                flickerToggleDelayCurrent = flickerToggleDelayMax;
+                flickerCurrentCount--;
+
+                if(flickerCurrentCount <= 0)
+                {
+                    spriteRenderer.enabled = true;
+                }
+                else
+                {
+                    spriteRenderer.enabled = flickerCurrentCount % 2 == 0;
+                }
+            }
+        }
+    }
 
 
 }

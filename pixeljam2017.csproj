@@ -89,6 +89,8 @@
   <ItemGroup>
     <Compile Include="Assets\Coin.cs" />
     <Compile Include="Assets\GroundItem.cs" />
+    <Compile Include="Assets\Hitpoint.cs" />
+    <Compile Include="Assets\HitpointsBar.cs" />
     <Compile Include="Assets\Scripts\Apple.cs" />
     <Compile Include="Assets\Scripts\Boundry.cs" />
     <Compile Include="Assets\Scripts\CoinManager.cs" />
