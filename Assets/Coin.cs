@@ -20,13 +20,9 @@ public class Coin : MonoBehaviour {
 
 	// if collider is entered by player then coin hides 	
 	void OnCollisionEnter2D(Collision2D collider) {
-		Debug.Log ("coin trigger");
-		Debug.Log ("(collider.gameObject" + collider.gameObject);
 		if (collider.gameObject == Player.instance.gameObject) {
-			Debug.Log ("hello");
 			CoinManager.instance.coinCounter++;
 			boxCollider2D.enabled = false;
-			Debug.Log ("destroy");
 			Destroy (gameObject);
 		}
 
