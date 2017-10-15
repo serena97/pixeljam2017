@@ -17,8 +17,7 @@ public class DialogueHolder : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
-		GameManager gameManager = GameManager.GetInstance();
-		if (collider.gameObject == gameManager.player.gameObject) {
+		if (collider.gameObject == Player.instance.gameObject) {
 			DialogueManager.instance.Show (dialogue);
 		}
 	}

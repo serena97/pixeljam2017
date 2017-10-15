@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    private static Player instance; // Singleton design pattern.
-
-    public static Player GetInstance() {
-        return instance;
-    }
+    public static Player instance; // Singleton design pattern.
 
     public GameObject projectile;
     public KeyCode moveLeftKey = KeyCode.LeftArrow;

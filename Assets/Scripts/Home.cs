@@ -46,19 +46,15 @@ public class Home : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        GameManager gameManager = GameManager.GetInstance();
-        if (collision.gameObject == gameManager.player.gameObject) {
+        if (collision.gameObject == Player.instance.gameObject) {
             doorActive = true;
         }
-        Debug.Log("Entering door.");
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        GameManager gameManager = GameManager.GetInstance();
-        if (collision.gameObject == gameManager.player.gameObject) {
+        if (collision.gameObject == Player.instance.gameObject) {
             doorActive = false;
         }
-        Debug.Log("Leaving door.");
     }
 
     // Update is called once per frame
