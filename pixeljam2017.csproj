@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Coin.cs" />
+    <Compile Include="Assets\DuckBoss.cs" />
     <Compile Include="Assets\GroundItem.cs" />
     <Compile Include="Assets\Hitpoint.cs" />
     <Compile Include="Assets\HitpointsBar.cs" />

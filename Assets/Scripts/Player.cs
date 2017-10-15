@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private int shootingCooldown = 0;
     private bool canJump = true;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {

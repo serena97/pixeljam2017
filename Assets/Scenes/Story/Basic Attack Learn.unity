@@ -378,7 +378,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4785233229339452, guid: c93e14484bfc44484a567dc5de5438ac, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1195002222720380, guid: c93e14484bfc44484a567dc5de5438ac, type: 2}
       propertyPath: m_Name
@@ -584,7 +584,7 @@ Prefab:
     - target: {fileID: 114230274306299988, guid: b6d9f5a23b08d07459ab798d477e50e7,
         type: 2}
       propertyPath: nextScene
-      value: 
+      value: Advanced Enemies
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6d9f5a23b08d07459ab798d477e50e7, type: 2}
@@ -1398,7 +1398,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1887040193
 Prefab:
