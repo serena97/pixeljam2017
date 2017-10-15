@@ -59,9 +59,13 @@ public class ItemDisplay : MonoBehaviour {
         SetItem(Item.None);
     }
 
-    private void UseKeys()
+    private void UseKey()
     {
-        SetItem(Item.None);
+        if(Door.activeDoor && Door.activeDoor.locked)
+        {
+            Door.activeDoor.Unlock();
+            SetItem(Item.None);
+        }
     }
 
     public void Use()
@@ -78,7 +82,7 @@ public class ItemDisplay : MonoBehaviour {
                 UseHealth();
                 break;
             case Item.Key:
-                UseKeys();
+                UseKey();
                 break;
         }
     }
@@ -98,10 +102,5 @@ public class ItemDisplay : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
         itemRenderer = itemObject.GetComponent<SpriteRenderer>();
         SetItem(Item.None);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

@@ -105,8 +105,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_Size: {x: 4, y: 2}
+  m_Offset: {x: 0, y: -0}
+  m_Size: {x: 2.7, y: 1.2}
   m_Direction: 1
 --- !u!95 &95278853459283904
 Animator:
@@ -139,8 +139,8 @@ MonoBehaviour:
   projectile: {fileID: 1374405389342496, guid: e06ffff752d3afe4798e28e74e75ebab, type: 2}
   moveLeftKey: 276
   moveRightKey: 275
-  jumpKey: 32
-  shootKey: 122
+  jumpKey: 122
+  shootKey: 120
   shootingInterval: 5
   moveForce: 5
   jumpForce: 8

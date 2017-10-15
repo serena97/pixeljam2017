@@ -59,7 +59,7 @@ public class Home : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if(doorActive && Input.GetKeyDown(KeyCode.Space)) {
+		if(doorActive && Input.GetKeyDown(KeyCode.Z)) {
             if(houseState == HouseState.Inside) {
                 LeaveHouse();
             }

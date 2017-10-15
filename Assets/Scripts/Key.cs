@@ -16,8 +16,8 @@ public class Key : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject == Player.instance.gameObject) {
-            InventoryDisplay.instance.PickupItem(Item.Key);
-            Destroy(gameObject);
+            if(InventoryDisplay.instance.PickupItem(Item.Key))
+                Destroy(gameObject);
         }
     }
 }

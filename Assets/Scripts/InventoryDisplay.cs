@@ -7,11 +7,12 @@ public class InventoryDisplay : MonoBehaviour {
     public static InventoryDisplay instance;
     public KeyCode nextItem = KeyCode.V;
     public KeyCode previousItem = KeyCode.C;
+    public KeyCode useItem = KeyCode.X;
     public ItemDisplay[] itemDisplays;
 
     private int selectedIndex = 0;
 
-    Item CurrentItem()
+    public Item CurrentItem()
     {
         return itemDisplays[selectedIndex].item;
     }
@@ -63,13 +64,20 @@ public class InventoryDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(nextItem)) {
+		if(Input.GetKeyDown(nextItem))
+        {
             NextItem();
         }
-        else if(Input.GetKeyDown(previousItem)) {
+        else if (Input.GetKeyDown(previousItem))
+        {
             PreviousItem();
         }
-	}
+        else if (Input.GetKeyDown(useItem))
+        {
+            Item item = CurrentItem();
+            itemDisplays[selectedIndex].Use();
+        }
+    }
 
     public bool PickupItem(Item item)
     {
