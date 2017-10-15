@@ -19,8 +19,7 @@ public class Coin : MonoBehaviour {
 
 	// if collider is entered by player then coin hides 	
 	void OnTriggerEnter2D(Collider2D collider) {
-		GameManager gameManager = GameManager.GetInstance();
-		if (collider.gameObject == gameManager.player.gameObject) {
+		if (collider.gameObject == Player.instance.gameObject) {
 			gameObject.SetActive (false);
 		}
 	}

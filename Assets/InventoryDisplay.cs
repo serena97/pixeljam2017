@@ -11,6 +11,11 @@ public class InventoryDisplay : MonoBehaviour {
 
     private int selectedIndex = 0;
 
+    Item CurrentItem()
+    {
+        return itemDisplays[selectedIndex].item;
+    }
+
 	// Use this for initialization
 	void Start () {
         if(instance == null) {

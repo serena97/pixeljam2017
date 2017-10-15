@@ -63,6 +63,7 @@ public class Player : MonoBehaviour {
         rigidBody.velocity = new Vector2(xVelocity, yVelocity);
 
         if (shootingCooldown <= 0 && Input.GetKey(shootKey)) {
+            UseItem();
 			ShootProjectile(spriteRenderer.flipX ? Direction.Right : Direction.Left);
             shootingCooldown = shootingInterval;
         }
