@@ -60,5 +60,6 @@ public class Door : MonoBehaviour {
 
     public void Enter() {
         SceneManager.LoadScene(destination);
+        Player.instance.transform.position = new Vector2(-7, Player.instance.transform.position.y);
 	}
 }
