@@ -1,0 +1,15 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GroundItem : MonoBehaviour {
+
+	public Item item;
+
+	void OnTriggerEnter2D(Collider2D collider) {
+		if(collider.gameObject == Player.instance.gameObject) {
+			if(InventoryDisplay.instance.PickupItem(item))
+				Destroy(gameObject);
+		}
+	}
+}
