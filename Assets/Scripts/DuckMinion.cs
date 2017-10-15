@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DuckMinionMode
+{
+    Patrol, Leftward, FollowPlayer
+}
+
 public class DuckMinion : MonoBehaviour {
 
-	public float speed = 1.0f;
+    public DuckMinionMode behaviour = DuckMinionMode.Patrol;
+    public float speed = 1.0f;
 	Rigidbody2D rigidBody;
 	SpriteRenderer spriteRenderer;
 	Direction direction = Direction.Right;
@@ -21,14 +27,28 @@ public class DuckMinion : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timer--;
-		if (timer <= 0) { 
-			direction = direction == Direction.Left ? Direction.Right : Direction.Left;
-			timer = 200;
-		}
-		spriteRenderer.flipX = direction == Direction.Right;
-		Vector2 newVelocity = new Vector2 (direction == Direction.Left ? -speed : speed, rigidBody.velocity.y);
-		rigidBody.velocity = newVelocity;
+        if (behaviour == DuckMinionMode.Patrol)
+        {
+            timer--;
+
+            if (timer <= 0)
+            {
+                direction = direction == Direction.Left ? Direction.Right : Direction.Left;
+                timer = 200;
+            }
+        }
+        else if(behaviour == DuckMinionMode.FollowPlayer)
+        {
+            direction = Player.instance.transform.position.x < transform.position.x ? Direction.Left : Direction.Right;
+        }
+        else
+        {
+            direction = Direction.Left;
+        }
+
+        spriteRenderer.flipX = direction == Direction.Right;
+        Vector2 newVelocity = new Vector2(direction == Direction.Left ? -speed : speed, rigidBody.velocity.y);
+        rigidBody.velocity = newVelocity;
 
         //if hit with apple, health -- whatever
         HandleFlicker();
