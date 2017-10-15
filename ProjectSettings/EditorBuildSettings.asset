@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Story/Castle.unity
     guid: 332e5bf00899b0e40b2a241848de1640
   - enabled: 1
+    path: Assets/Scenes/Story/Shop.unity
+    guid: 8fd4403728662114ea155c502af7a6bd
+  - enabled: 1
     path: Assets/Scenes/Story/Home.unity
     guid: 083f21099c8b6af489786188732efb75
   - enabled: 1
-    path: Assets/Scenes/Story/Shop.unity
-    guid: 8fd4403728662114ea155c502af7a6bd
+    path: Assets/Scenes/Story/Basic Attack Learn.unity
+    guid: 05f1ab87857c141ca9c763a89c36cda5
